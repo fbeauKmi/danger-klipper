@@ -65,7 +65,7 @@ jobs:
         run: |
           cd repo
           git fetch --depth=1 --prune --no-tags origin master upstream
-          git --work-tree=.. checkout origin/master -- ../scripts/requirements_dev.txt ../scripts/python-format.sh ../pyproject.toml ../.flake8
+          git --work-tree=.. checkout origin/master -- ../scripts/requirements_dev.txt ../scripts/python-format.sh ../pyproject.toml ../.flake8 ../.github
           git reset
           echo "tooling configs checked out from: $(git rev-parse origin/master)" >> $GITHUB_STEP_SUMMARY
           cat $GITHUB_STEP_SUMMARY >> "$RUNNER_TEMP/summary"
