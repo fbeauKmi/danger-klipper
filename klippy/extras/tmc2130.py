@@ -20,6 +20,13 @@ Registers = {
     "THIGH": 0x15,
     "XDIRECT": 0x2D,
     "MSLUT0": 0x60,
+    "MSLUT1": 0x61,
+    "MSLUT2": 0x62,
+    "MSLUT3": 0x63,
+    "MSLUT4": 0x64,
+    "MSLUT5": 0x65,
+    "MSLUT6": 0x66,
+    "MSLUT7": 0x67,
     "MSLUTSEL": 0x68,
     "MSLUTSTART": 0x69,
     "MSCNT": 0x6A,
@@ -89,6 +96,27 @@ Fields["TSTEP"] = {"tstep": 0xFFFFF}
 Fields["TPWMTHRS"] = {"tpwmthrs": 0xFFFFF}
 Fields["TCOOLTHRS"] = {"tcoolthrs": 0xFFFFF}
 Fields["THIGH"] = {"thigh": 0xFFFFF}
+Fields["MSLUT0"] = {"mslut0": 0xFFFFFFFF}
+Fields["MSLUT1"] = {"mslut1": 0xFFFFFFFF}
+Fields["MSLUT2"] = {"mslut2": 0xFFFFFFFF}
+Fields["MSLUT3"] = {"mslut3": 0xFFFFFFFF}
+Fields["MSLUT4"] = {"mslut4": 0xFFFFFFFF}
+Fields["MSLUT5"] = {"mslut5": 0xFFFFFFFF}
+Fields["MSLUT6"] = {"mslut6": 0xFFFFFFFF}
+Fields["MSLUT7"] = {"mslut7": 0xFFFFFFFF}
+Fields["MSLUTSEL"] = {
+    "x3": 0xFF << 24,
+    "x2": 0xFF << 16,
+    "x1": 0xFF << 8,
+    "w3": 0x03 << 6,
+    "w2": 0x03 << 4,
+    "w1": 0x03 << 2,
+    "w0": 0x03 << 0,
+}
+Fields["MSLUTSTART"] = {
+    "start_sin": 0xFF << 0,
+    "start_sin90": 0xFF << 16,
+}
 Fields["MSCNT"] = {"mscnt": 0x3FF}
 Fields["MSCURACT"] = {"cur_a": 0x1FF, "cur_b": 0x1FF << 16}
 Fields["CHOPCONF"] = {
@@ -382,20 +410,26 @@ class TMC2130:
         self.get_phase_offset = cmdhelper.get_phase_offset
         self.get_status = cmdhelper.get_status
         # Setup basic register values
+        tmc.TMCWaveTableHelper(config, self.mcu_tmc)
         tmc.TMCStealthchopHelper(config, self.mcu_tmc, TMC_FREQUENCY)
         # Allow other registers to be set from the config
         set_config_field = self.fields.set_config_field
+        # CHOPCONF
         set_config_field(config, "toff", 4)
         set_config_field(config, "hstrt", 0)
         set_config_field(config, "hend", 7)
         set_config_field(config, "tbl", 1)
+        # COOLCONF
+        set_config_field(config, "sgt", 0)
+        # IHOLDIRUN
         set_config_field(config, "iholddelay", 8)
-        set_config_field(config, "tpowerdown", 0)
+        # PWMCONF
         set_config_field(config, "pwm_ampl", 128)
         set_config_field(config, "pwm_grad", 4)
         set_config_field(config, "pwm_freq", 1)
         set_config_field(config, "pwm_autoscale", True)
-        set_config_field(config, "sgt", 0)
+        # TPOWERDOWN
+        set_config_field(config, "tpowerdown", 0)
 
 
 def load_config_prefix(config):

@@ -57,6 +57,9 @@ DICTIONARY stm32f103.dict
 # Printers using the stm32f103 via serial
 DICTIONARY stm32f103-serial.dict
 
+# Printers using the stm32f401
+DICTIONARY stm32f401.dict
+
 # Printers using the stm32f405
 DICTIONARY stm32f405.dict
 
@@ -65,6 +68,9 @@ DICTIONARY stm32f407.dict
 
 # Printers using the stm32f446
 DICTIONARY stm32f446.dict
+
+# Printers using the stm32h723
+DICTIONARY stm32h723.dict
 
 # Printers using the stm32h743
 DICTIONARY stm32h743.dict
