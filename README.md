@@ -18,6 +18,8 @@ Features merged into the master branch:
 
 - [heater: Velocity PID](https://github.com/DangerKlippers/danger-klipper/pull/47) ([klipper#6272](https://github.com/Klipper3d/klipper/pull/6272))
 
+- [heater: Dual Loop PID](https://github.com/DangerKlippers/danger-klipper/issues/58) ([klipper#5972](https://github.com/Klipper3d/klipper/pull/5972))
+
 - [gcode: Jinja2.ext.do extension](https://github.com/DangerKlippers/danger-klipper/pull/26) ([klipper#5149](https://github.com/Klipper3d/klipper/pull/5149))
 
 - [probe: Dockable Probe](https://github.com/DangerKlippers/danger-klipper/pull/43) ([klipper#4328](https://github.com/Klipper3d/klipper/pull/4328))
