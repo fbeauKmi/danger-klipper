@@ -1,6 +1,6 @@
 # Extruder tests
 DICTIONARY atmega2560.dict
-CONFIG extruders.cfg
+CONFIG heaters_pid_v.cfg
 
 # Extrude only
 G1 E5
