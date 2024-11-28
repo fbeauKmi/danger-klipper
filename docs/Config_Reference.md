@@ -2169,6 +2169,21 @@ pins:
 #   provided.
 ```
 
+### ⚠️ [global_variables]
+
+Global variables are defined and stored in a configuration section. These
+variables can be used across different sections of the configuration and are
+substituted with their corresponding values during startup. To reference a
+global variable, use the `var:` prefix followed by the variable name (e.g.,
+`run_current: var:xy_current`).   
+
+```
+[global_variables]
+<variable_name>: <Value>
+#   The name and value of the variable to be declared in any section of the
+#   configuration.   
+```
+
 ## Bed probing hardware
 
 ### [probe]

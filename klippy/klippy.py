@@ -207,6 +207,7 @@ class Printer:
             and get_danger_options().log_config_file_at_startup
         ):
             pconfig.log_config(config)
+        self.load_object(config, "global_variables", None)
         # Create printer components
         for m in [pins, mcu]:
             m.add_printer_objects(config)

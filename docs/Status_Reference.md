@@ -254,6 +254,13 @@ The following information is available in the `gcode_move` object
 - `absolute_extrude`: This returns True if in `M82` absolute extrude
   mode or False if in `M83` relative mode.
 
+## global_variables
+
+The following information is available in the `global_variables` object
+(this object is always available):
+- `variables`: collection of available variables
+- `replaced`: collection of option where variables were replaced by value
+
 ## hall_filament_width_sensor
 
 The following information is available in the

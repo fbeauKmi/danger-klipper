@@ -1,0 +1,5 @@
+CONFIG global_variables.cfg
+DICTIONARY atmega2560.dict
+
+# Check variables substitution in config
+CHECK_GLOBAL_VARIABLES

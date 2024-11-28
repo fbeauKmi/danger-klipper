@@ -5,6 +5,7 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import sys, os, glob, re, time, logging, configparser, io
 from extras.danger_options import get_danger_options
+from extras.global_variables import global_variables_replacement
 
 error = configparser.Error
 
@@ -50,6 +51,7 @@ class ConfigWrapper:
                 % (option, self.section)
             )
         try:
+            global_variables_replacement(self.fileconfig, self.section, option)
             v = parser(self.section, option)
         except self.error as e:
             raise

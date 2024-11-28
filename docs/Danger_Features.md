@@ -22,6 +22,7 @@
 ## New Klipper Modules
 
 - [gcode_shell_command](./G-Code_Shell_Command.md) - Execute linux commands and scripts from within Klipper
+- [global_variables](./Config_Reference.md#️-global_variables) - Keeps variables in one place for use in other sections.
 
 ## Sensorless Homing
 
