@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.kalico.gg/Example_Configs.html">
+        <link rel="canonical" href="https://docs.kalico.gg/Kalico_Additions.html">
       
       
-        <link rel="prev" href="Packaging.html">
+        <link rel="prev" href="Config_Reference.html">
       
       
-        <link rel="next" href="SDCard_Updates.html">
+        <link rel="next" href="Bleeding_Edge.html">
       
       
       <link rel="icon" href="logo/kalico-32x32.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Example configurations - Kalico Documentation</title>
+        <title>Kalico additions - Kalico Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-configurations" class="md-skip">
+        <a href="#kalico-additions" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Example configurations
+              Kalico additions
             
           </span>
         </div>
@@ -387,17 +387,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -411,7 +413,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -443,10 +445,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="Kalico_Additions.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Kalico additions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Kalico_Additions.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -455,6 +477,116 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-to-klipper-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to Klipper defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional configuration options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-kalico-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Kalico Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensorless-homing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensorless Homing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probes-and-probing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probes and Probing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heaters-fans-and-pid-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heaters, Fans, and PID changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tmc-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      TMC Drivers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1607,19 +1739,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
           <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
@@ -1633,7 +1763,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             Device Specific Documents
@@ -1644,30 +1774,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Example configurations
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="Example_Configs.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="Example_Configs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1676,35 +1786,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#guidelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guidelines
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1973,9 +2054,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#guidelines" class="md-nav__link">
+  <a href="#changes-to-klipper-defaults" class="md-nav__link">
     <span class="md-ellipsis">
-      Guidelines
+      Changes to Klipper defaults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional configuration options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced behavior
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-kalico-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Kalico Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensorless-homing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensorless Homing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probes-and-probing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probes and Probing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heaters-fans-and-pid-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heaters, Fans, and PID changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tmc-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      TMC Drivers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macros
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
     </span>
   </a>
   
@@ -1996,7 +2158,7 @@
                   
 
   
-    <a href="https://github.com/KalicoCrew/kalico/edit/main/docs/Example_Configs.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/KalicoCrew/kalico/edit/main/docs/Kalico_Additions.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2004,119 +2166,78 @@
   
 
 
-<h1 id="example-configurations">Example configurations<a class="headerlink" href="#example-configurations" title="Permanent link">&para;</a></h1>
-<p>This document contains guidelines for contributing an example Kalico
-configuration to the Kalico github repository (located in the
-<a href="https://github.com/KalicoCrew/kalico//blob/main/config/">config directory</a>).</p>
-<p>Note that the
-<a href="https://community.klipper3d.org">Klipper Community Discourse server</a>
-is also a useful resource for finding and sharing config files.</p>
-<h2 id="guidelines">Guidelines<a class="headerlink" href="#guidelines" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Select the appropriate config filename prefix:<ol>
-<li>The <code>printer</code> prefix is used for stock printers sold by a
-    mainstream manufacturer.</li>
-<li>The <code>generic</code> prefix is used for a 3d printer board that may be
-    used in many different types of printers.</li>
-<li>The <code>kit</code> prefix is for 3d printers that are assembled according
-    to a widely used specification. These "kit" printers are
-    generally distinct from normal "printers" in that they are not
-    sold by a manufacturer.</li>
-<li>The <code>sample</code> prefix is used for config "snippets" that one may
-    copy-and-paste into the main config file.</li>
-<li>The <code>example</code> prefix is used to describe printer kinematics.
-    This type of config is typically only added along with code for
-    a new type of printer kinematics.</li>
-</ol>
-</li>
-<li>All configuration files must end in a <code>.cfg</code> suffix. The <code>printer</code>
-   config files must end in a year followed by <code>.cfg</code> (eg,
-   <code>-2019.cfg</code>). In this case, the year is an approximate year the
-   given printer was sold.</li>
-<li>Do not use spaces or special characters in the config filename. The
-   filename should contain only characters <code>A-Z</code>, <code>a-z</code>, <code>0-9</code>, <code>-</code>,
-   and <code>.</code>.</li>
-<li>Kalico must be able to start <code>printer</code>, <code>generic</code>, and <code>kit</code>
-   example config file without error. These config files should be
-   added to the
-   <a href="https://github.com/KalicoCrew/kalico//blob/main/test/klippy/printers.test">test/klippy/printers.test</a>
-   regression test case. Add new config files to that test case in the
-   appropriate section and in alphabetical order within that section.</li>
-<li>The example configuration should be for the "stock" configuration
-   of the printer. (There are too many "customized" configurations to
-   track in the main Kalico repository.) Similarly, we only add
-   example config files for printers, kits, and boards that have
-   mainstream popularity (eg, there should be at least a 100 of them
-   in active use). Consider using the
-   <a href="https://community.klipper3d.org">Klipper Community Discourse server</a>
-   for other configs.</li>
-<li>Only specify those devices present on the given printer or board.
-   Do not specify settings specific to your particular setup.<ol>
-<li>For <code>generic</code> config files, only those devices on the mainboard
-    should be described. For example, it would not make sense to add
-    a display config section to a "generic" config as there is no
-    way to know if the board will be attached to that type of
-    display. If the board has a specific hardware port to facilitate
-    an optional peripheral (eg, a bltouch port) then one can add a
-    "commented out" config section for the given device.</li>
-<li>Do not specify <code>pressure_advance</code> in an example config, as that
-    value is specific to the filament, not the printer hardware.
-    Similarly, do not specify <code>max_extrude_only_velocity</code> nor
-    <code>max_extrude_only_accel</code> settings.</li>
-<li>Do not specify a config section containing a host path or host
-    hardware. For example, do not specify <code>[virtual_sdcard]</code> nor
-    <code>[temperature_host]</code> config sections.</li>
-<li>Only define macros that utilize functionality specific to the
-    given printer or to define g-codes that are commonly emitted by
-    slicers configured for the given printer.</li>
-</ol>
-</li>
-<li>Where possible, it is best to use the same wording, phrasing,
-   indentation, and section ordering as the existing config files.<ol>
-<li>The top of each config file should list the type of
-    micro-controller the user should select during "make
-    menuconfig". It should also have a reference to
-    "docs/Config_Reference.md".</li>
-<li>Do not copy the field documentation into the example config
-    files. (Doing so creates a maintenance burden as an update to
-    the documentation would then require changing it in many
-    places.)</li>
-<li>Example config files should not contain a "SAVE_CONFIG" section.
-    If necessary, copy the relevant fields from the SAVE_CONFIG
-    section to the appropriate section in the main config area.</li>
-<li>Use <code>field: value</code> syntax instead of <code>field=value</code>.</li>
-<li>When adding an extruder <code>rotation_distance</code> it is preferable to
-    specify a <code>gear_ratio</code> if the extruder has a gearing mechanism.
-    We expect the rotation_distance in the example configs to
-    correlate with the circumference of the hobbed gear in the
-    extruder - it is normally in the range of 20 to 35mm. When
-    specifying a <code>gear_ratio</code> it is preferable to specify the actual
-    gears on the mechanism (eg, prefer <code>gear_ratio: 80:20</code> over
-    <code>gear_ratio: 4:1</code>). See the
-    <a href="Rotation_Distance.html#using-a-gear_ratio">rotation distance document</a>
-    for more information.</li>
-<li>Avoid defining field values that are set to their default
-    value. For example, one should not specify <code>min_extrude_temp:
-    170</code> as that is already the default value.</li>
-<li>Where possible, lines should not exceed 80 columns.</li>
-<li>Avoid adding attribution or revision messages to the config
-    files. (For example, avoid adding lines like "this file was
-    created by ...".) Place attribution and change history in the
-    git commit message.</li>
-</ol>
-</li>
-<li>Do not use any deprecated features in the example config file.</li>
-<li>Do not disable a default safety system in an example config file.
-   For example, a config should not specify a custom
-   <code>max_extrude_cross_section</code>. Do not enable debugging features. For
-   example there should not be a <code>force_move</code> config section.</li>
-<li>All known boards that Kalico supports can use the default serial
-    baud rate of 250000. Do not recommend a different baud rate in an
-    example config file.</li>
-</ol>
-<p>Example config files are submitted by creating a github "pull
-request". Please also follow the directions in the
-<a href="CONTRIBUTING.html">contributing document</a>.</p>
+<h1 id="kalico-additions">Kalico additions<a class="headerlink" href="#kalico-additions" title="Permanent link">&para;</a></h1>
+<h2 id="changes-to-klipper-defaults">Changes to Klipper defaults<a class="headerlink" href="#changes-to-klipper-defaults" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#force_move"><code>[force_move]</code></a> is enabled by default. Use <code>[force_move] enable_force_move: False</code> to disable it</li>
+<li><a href="Config_Reference.html#respond"><code>[respond]</code></a> is enabled by default. Use <code>[respond] enable_respond: False</code> to disable it</li>
+<li><a href="Config_Reference.html#exclude_object"><code>[exclude_object]</code></a> is enabled by default. Use <code>[exclude_object] enable_exclude_object: False</code> to disable it</li>
+</ul>
+<h2 id="additional-configuration-options">Additional configuration options<a class="headerlink" href="#additional-configuration-options" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#mcu"><code>[mcu] is_non_critical</code></a> enables marking of an mcu as optional - it can be freely disconnected and connected at will. (useful for MCU-based accelerometer boards, mcu-based probes that shut down in hot chambers, etc...)</li>
+<li><a href="Config_Reference.html#danger-options"><code>[danger_options]</code></a> - New configuration options to adjust Kalico values that were previously hidden</li>
+<li>Additional kinematics versions enabled per-axis acceleration, see <a href="Config_Reference.html#cartesian-kinematics-with-limits-for-x-and-y-axes">limited_cartesian</a> and <a href="Config_Reference.html#corexy-kinematics-with-limits-for-x-and-y-axes">limited_corexy</a></li>
+<li><code>--rotate-log-at-restart</code> can be added to your Kalico start script or service to force log rotation every restart.</li>
+<li><a href="Config_Reference.html#virtual_sdcard"><code>[virtual_sdcard] with_subdirs</code></a> enables scanning of subdirectories for .gcode files, for the menu and M20/M23 commands</li>
+<li><a href="Config_Reference.html#firmware_retraction"><code>[firmware_retraction] z_hop_height</code></a> adds an automatic z hop when using firmware retraction</li>
+<li><a href="Config_Reference.html#configuration-references"><code>[constants]</code> and <code>${constants.value}</code></a> allow re-using values in your configuration</li>
+</ul>
+<h2 id="enhanced-behavior">Enhanced behavior<a class="headerlink" href="#enhanced-behavior" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="CANBUS.html#finding-the-canbus_uuid-for-new-micro-controllers"><code>canbus_query.py</code></a> now responds with all Kalico devices, even after they've been assigned a node_id.</li>
+</ul>
+<h2 id="new-kalico-modules">New Kalico Modules<a class="headerlink" href="#new-kalico-modules" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="G-Code_Shell_Command.html">gcode_shell_command</a> - Execute linux commands and scripts from within Kalico</li>
+</ul>
+<h2 id="sensorless-homing">Sensorless Homing<a class="headerlink" href="#sensorless-homing" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#tmc-stepper-driver-configuration"><code>[tmcXXXX] home_current</code></a> automatically sets a different current for homing</li>
+<li><a href="Config_Reference.html#tmc-stepper-driver-configuration"><code>[tmcXXXX] current_change_dwell_time</code></a> will add a delay before homing</li>
+<li><a href="Config_Reference.html#stepper"><code>[stepper_X] homing_retract_dist, homing_retract_speed</code></a> add a short retraction and a second homing for better accuracy</li>
+<li><a href="Config_Reference.html#stepper"><code>[stepper_X] min_home_dist</code></a> will move away from the endstop before homing</li>
+</ul>
+<h2 id="probes-and-probing">Probes and Probing<a class="headerlink" href="#probes-and-probing" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#probe"><code>[probe] drop_first_result: True</code></a> will drop the first result when probing. This can improve probe accuracy for printers that have an outlier for the first sample.</li>
+<li><a href="Config_Reference.html#dockable_probe"><code>[dockable_probe]</code></a> brings helpful native support for docked probes, such as the Annex Quickdraw, Klicky/Unklicky, and countless others.</li>
+<li><a href="Config_Reference.html#z_calibration"><code>[z_calibration]</code></a> enables automatic probe Z offset calibration using a reference endstop like the Voron 2.4 nozzle endstop.</li>
+<li><a href="Config_Reference.html#z_tilt_ng"><code>[z_tilt_ng]</code></a> adds enforced 3-point z tilt calibration</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level] increasing_threshold</code></a> allows you to customize the allowed variation when probing multiple times</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level] adaptive_horizontal_move_z</code></a> adaptively decrease horizontal_move_z based on resulting error - z_tilt and QGL faster and safer!</li>
+<li><a href="Config_Reference.html#safe_z_home"><code>[safe_z_home] home_y_before_x</code></a> let you home Y before X.</li>
+<li><a href="Config_Reference.html#z_tilt"><code>[z_tilt/quad_gantry_level/etc] use_probe_xy_offsets</code></a> let you decide if the `[probe] XY offsets should be applied to probe positions.</li>
+</ul>
+<h2 id="heaters-fans-and-pid-changes">Heaters, Fans, and PID changes<a class="headerlink" href="#heaters-fans-and-pid-changes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="MPC.html">Model Predictive Control</a> is an advanced temperature control method that offers an alternative to traditional PID control.</li>
+<li><a href="PID.html">Velocity PID</a> can be more accurate than positional PID, but is more susceptible to noisy sensors and may require larger smoothing times</li>
+<li><a href="G-Codes.html#pid_profile"><code>PID_PROFILE [LOAD/SAVE]</code></a> allows you to calibrate and save PID profiles at multiple temperatures and fan speeds, and later restore them. With some clever macros, automatic per-material pid tuning is within reach!</li>
+<li><a href="G-Codes.html#set_heater_pid"><code>SET_HEATER_PID HEATER= KP= KI= KD=</code></a> can update your PID parameters without a reload.</li>
+<li><a href="G-Codes.html#heater_interrupt"><code>HEATER_INTERRUPT</code></a> will interrupt a <code>TEMPERATURE_WAIT</code>.</li>
+<li>ADC out of range errors now include which heater, and additional information to assist in troubleshooting</li>
+</ul>
+<ul>
+<li><a href="Config_Reference.html#temperature_fan"><code>[temperature_fan] control: curve</code></a> lets you set a fan curve instead of linear control</li>
+<li><a href="Config_Reference.html#temperature_fan"><code>[temperature_fan] reverse: True</code></a> will let you control a fan in reverse to temperature control. The lower the temperature, the higher the fan runs.</li>
+<li>Fans now normalize PWM power within <code>off_below</code> and <code>max_power</code>, so setting a fan to 10% will get you 10% fan speed within your configured off/max range.</li>
+</ul>
+<h2 id="tmc-drivers">TMC Drivers<a class="headerlink" href="#tmc-drivers" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="Config_Reference.html#tmc2240"><code>[tmc2240] driver_CS and current_range</code></a> let you tune the current scaler and current range of your tmc2240 drivers.</li>
+</ul>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The jinja <code>do</code> extension has been enabled. You can now call functions in your macros without resorting to dirty hacks: <code>{% do array.append(5) %}</code></li>
+<li>The python <a href="https://docs.python.org/3/library/math.html"><code>math</code></a> library is available to macros. <code>{math.sin(math.pi * variable)}</code> and more!</li>
+<li>New <a href="G-Codes.html#reload_gcode_macros"><code>RELOAD_GCODE_MACROS</code></a> G-Code command to reload <code>[gcode_macro]</code> templates without requiring a restart.</li>
+<li>G-Code Macros can be written in Python. Read more <a href="Command_Templates.html">here</a></li>
+</ul>
+<h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<p>Extend your Kalico installation with custom plugins.</p>
+<p>Your python plugins can now extend <a href="https://github.com/KalicoCrew/kalico/tree/main/klippy/extras"><code>klippy/extras</code></a> adding new modules to Kalico without causing updates to fail due to a "dirty" git tree.</p>
+<p>Enable <code>[danger_options] allow_plugin_override: True</code> to override existing extras.</p>
 
 
 
