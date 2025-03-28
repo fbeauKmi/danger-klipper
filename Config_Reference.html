@@ -579,6 +579,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#linear-delta-kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Delta Kinematics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deltesian-kinematics" class="md-nav__link">
     <span class="md-ellipsis">
       Deltesian Kinematics
@@ -3614,6 +3623,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -3774,6 +3803,15 @@
   <a href="#cartesian-kinematics-with-limits-for-x-and-y-axes" class="md-nav__link">
     <span class="md-ellipsis">
       ⚠️ Cartesian Kinematics with limits for X and Y axes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-delta-kinematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Delta Kinematics
     </span>
   </a>
   
@@ -5482,6 +5520,9 @@ pins such as "extra_mcu:ar9" may then be used elsewhere in the config
 #allow_plugin_override: False
 #   Allows modules in `plugins` to override modules of the same name in `extras`
 #   The default is False.
+#single_mcu_trsync_timeout: 0.25
+#   The timeout (in seconds) for MCU synchronization during the homing process when
+#   a single MCUs is in use. The default is 0.25
 #multi_mcu_trsync_timeout: 0.025
 #   The timeout (in seconds) for MCU synchronization during the homing process when
 #   multiple MCUs are in use. The default is 0.025
@@ -5745,7 +5786,8 @@ max_z_accel:
 
 <h3 id="cartesian-kinematics-with-limits-for-x-and-y-axes">⚠️ Cartesian Kinematics with limits for X and Y axes<a class="headerlink" href="#cartesian-kinematics-with-limits-for-x-and-y-axes" title="Permanent link">&para;</a></h3>
 <p>Behaves exactly the as cartesian kinematics, but allows to set a velocity and
-acceleration limit for X and Y axis. This also makes command <a href="G-Codes.html#set_kinematics_limit"><code>SET_KINEMATICS_LIMIT</code></a> available to sets these limits at runtime.</p>
+acceleration limit for X and Y axis. This also makes command
+<a href="G-Codes.html#set_kinematics_limit"><code>SET_KINEMATICS_LIMIT</code></a> available to sets these limits at runtime.</p>
 <div class="highlight"><pre><span></span><code>[printer]
 kinematics: limited_cartesian
 max_x_velocity:
@@ -5799,6 +5841,14 @@ diagonals. If the slicer emit <code>M204 S3000</code> (3000 mm/s^2 accel). On th
 143° diagonals, the toolhead will accelerate at 3000 mm/s^2. On the X axis, the
 acceleration will be  12000 * 3000 / 15000 = 2400 mm/s^2, and 18000 mm/s^2 for
 pure Y moves.</p>
+<h3 id="linear-delta-kinematics">Linear Delta Kinematics<a class="headerlink" href="#linear-delta-kinematics" title="Permanent link">&para;</a></h3>
+<p>See <a href="https://github.com/KalicoCrew/kalico//blob/main/config/example-delta.cfg">example-delta.cfg</a> for an example
+linear delta kinematics config file. See the
+<a href="Delta_Calibrate.html">delta calibrate guide</a> for information on
+calibration.</p>
+<p>Only parameters specific to linear delta printers are described here -
+see <a href="#common-kinematic-settings">common kinematic settings</a> for
+available parameters.</p>
 <div class="highlight"><pre><span></span><code>[printer]
 kinematics: delta
 max_z_velocity:
@@ -6470,19 +6520,19 @@ pid_target:
 # For reference only, specifies the temperature the profile was calibrated for.
 # If you create a custom profile, either enter the temperature that profile is
 # intended to be used at or leave it blank.
-pid_tolerance: 
+pid_tolerance:
 # The tolerance that was used when autocalibrating the profile. If you define
 # a custom profile, leave it empty.
 control: &lt;pid|pid_v&gt;
 # Has to be either pid or pid_v.
 # This parameter is required.
-pid_kp: 
+pid_kp:
 # The P value for the PID Control.
 # This parameter is required.
 pid_ki:
 # The I value for the PID Control.
 # This parameter is required.
-pid_kd: 
+pid_kd:
 # The D value for the PID Control.
 # This parameter is required.
 </code></pre></div>
@@ -7736,6 +7786,15 @@ detach_position: 0,0,0
 #dock_sense_pin:
 #   This supplemental pin can be defined to determine a docked state in
 #   addition to probe_sense_pin or check_open_attach.
+#pre_attach_gcode:
+#   Code to run right before the probe gets attached
+#post_attach_gcode:
+#   Code to run right after the probe gets attached
+#pre_detach_gcode:
+#   Code to run right before the probe gets detached
+#post_detach_gcode:
+#   Code to run right after the probe gets detached
+#
 #x_offset:
 #y_offset:
 #z_offset:
@@ -8510,7 +8569,12 @@ monitor these temperatures.</p>
 </code></pre></div>
 
 <h3 id="ds18b20-temperature-sensor">DS18B20 temperature sensor<a class="headerlink" href="#ds18b20-temperature-sensor" title="Permanent link">&para;</a></h3>
-<p>DS18B20 is a 1-wire (w1) digital temperature sensor. Note that this sensor is not intended for use with extruders and heater beds, but rather for monitoring ambient temperature (C). These sensors have range up to 125 C, so are usable for e.g. chamber temperature monitoring. They can also function as simple fan/heater controllers. DS18B20 sensors are only supported on the "host mcu", e.g. the Raspberry Pi. The w1-gpio Linux kernel module must be installed.</p>
+<p>DS18B20 is a 1-wire (w1) digital temperature sensor. Note that this sensor
+is not intended for use with extruders and heater beds, but rather for monitoring
+ambient temperature (C). These sensors have range up to 125 C, so are usable for
+e.g. chamber temperature monitoring. They can also function as simple fan/heater
+controllers. DS18B20 sensors are only supported on the "host mcu", e.g. the
+Raspberry Pi. The w1-gpio Linux kernel module must be installed.</p>
 <div class="highlight"><pre><span></span><code>sensor_type: DS18B20
 serial_no:
 #   Each 1-wire device has a unique serial number used to identify the device,
@@ -8524,7 +8588,8 @@ serial_no:
 </code></pre></div>
 
 <h3 id="combined-temperature-sensor">Combined temperature sensor<a class="headerlink" href="#combined-temperature-sensor" title="Permanent link">&para;</a></h3>
-<p>Combined temperature sensor is a virtual temperature sensor based on several other sensors. This sensor can be used with extruders, heater_generic and heater beds.</p>
+<p>Combined temperature sensor is a virtual temperature sensor based on several other
+sensors. This sensor can be used with extruders, heater_generic and heater beds.</p>
 <div class="highlight"><pre><span></span><code>sensor_type: temperature_combined
 #sensor_list:
 #   Must be provided. List of sensors to combine to new &quot;virtual&quot;
@@ -9148,8 +9213,10 @@ run_current:
 #   The amount of time (in seconds) to wait after changing homing current.
 #   The default is 0.5 seconds.
 sense_resistor:
-#   The resistance (in ohms) of the driver sense resistor. This
-#   parameter must be provided.
+#   The resistance (in ohms) of the driver sense resistor. This parameter
+#   must be provided. Common values are 0.110 ohms for most TMC2209 drivers
+#   and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
+#   or board schematic to confirm the correct value.
 #stealthchop_threshold: 0
 #   The velocity (in mm/s) to set the &quot;stealthChop&quot; threshold to. When
 #   set, &quot;stealthChop&quot; mode will be enabled if the stepper motor
@@ -9256,8 +9323,10 @@ run_current:
 #   The amount of time (in seconds) to wait after changing homing current.
 #   The default is 0.5 seconds.
 sense_resistor:
-#   The resistance (in ohms) of the driver sense resistor. This
-#   parameter must be provided.
+#   The resistance (in ohms) of the driver sense resistor. This parameter
+#   must be provided. Common values are 0.110 ohms for most TMC2209 drivers
+#   and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
+#   or board schematic to confirm the correct value.
 #stealthchop_threshold: 0
 #   The velocity (in mm/s) to set the &quot;stealthChop&quot; threshold to. When
 #   set, &quot;stealthChop&quot; mode will be enabled if the stepper motor
@@ -9376,8 +9445,10 @@ run_current:
 #   The amount of time (in seconds) to wait after changing homing current.
 #   The default is 0.5 seconds.
 sense_resistor:
-#   The resistance (in ohms) of the driver sense resistor. This
-#   parameter must be provided.
+#   The resistance (in ohms) of the driver sense resistor. This parameter
+#   must be provided. Common values are 0.110 ohms for most TMC2209 drivers
+#   and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
+#   or board schematic to confirm the correct value.
 #idle_current_percent: 100
 #   The percentage of the run_current the stepper driver will be
 #   lowered to when the idle timeout expires (you need to set up the
@@ -9482,9 +9553,16 @@ run_current:
 #   The current_range bit value for the driver. Valid values are 0-3.
 #   The defaul is to auto-calculate to match the requested run_current.
 #   For further information consult the tmc2240 datasheet and tuning table.
-#driver_CS: 31
-#   The current_scaler value for the driver. The default is 31.
-#   For further information consult the tmc2240 datasheet and tuning table.
+#driver_CS:
+#   The current scale value for the TMC driver.
+#   The ideal `driver_CS` value may be found by setting the `CS` value in the
+#   TMC calculations spreadsheet (https://www.analog.com/media/en/engineering-tools/design-tools/tmc5240_tmc2240_tmc2210_calculations.xlsx),
+#   under the chopper tab so the hysteresis is not marked as too high.
+#   While it&#39;s not necessary to change the CS value, it can be helpful to achieve
+#   adequate hysteresis values on low current steppers.
+#   By default, this value is autocalculated.
+#   For homing, the code will first try to use the specified driver_CS value. If that
+#   does not result in an allowed value, the CS for homing will be autocalculated.
 #driver_MSLUT0: 2863314260
 #driver_MSLUT1: 1251300522
 #driver_MSLUT2: 608774441
@@ -9607,8 +9685,10 @@ run_current:
 #   The amount of time (in seconds) to wait after changing homing current.
 #   The default is 0.5 seconds.
 sense_resistor:
-#   The resistance (in ohms) of the driver sense resistor. This
-#   parameter must be provided.
+#   The resistance (in ohms) of the driver sense resistor. This parameter
+#   must be provided. Common values are 0.110 ohms for most TMC2209 drivers
+#   and 0.075 ohms for TMC5160 drivers. Check your stepper driver documentation
+#   or board schematic to confirm the correct value.
 #stealthchop_threshold: 0
 #   The velocity (in mm/s) to set the &quot;stealthChop&quot; threshold to. When
 #   set, &quot;stealthChop&quot; mode will be enabled if the stepper motor
@@ -9662,6 +9742,16 @@ sense_resistor:
 #driver_CHM: 0
 #driver_VHIGHFS: 0
 #driver_VHIGHCHM: 0
+#driver_CS:
+#   The current scale value for the TMC driver.
+#   The ideal `driver_CS` value may be found by setting the `CS` value in the
+#   TMC calculations spreadsheet (https://www.analog.com/media/en/engineering-tools/design-tools/tmc5160_calculations.xlsx),
+#   under the chopper tab so the hysteresis is not marked as too high.
+#   While it&#39;s not necessary to change the CS value, it can be helpful to achieve
+#   adequate hysteresis values on low current steppers.
+#   By default, this value is autocalculated.
+#   For homing, the code will first try to use the specified driver_CS value. If that
+#   does not result in an allowed value, the CS for homing will be autocalculated.
 #driver_DISS2G: 0
 #driver_DISS2VS: 0
 #driver_PWM_AUTOSCALE: True
@@ -10721,7 +10811,7 @@ for full functionality.</p>
 Octoprint as they will conflict, and 1 will fail to initialize
 properly likely aborting your print.</p>
 <p>If you use Octoprint and stream gcode over the serial port instead of
-printing from virtual_sd, then remo <strong>M1</strong> and <strong>M0</strong> from <em>Pausing commands</em>
+printing from virtual_sd, then remove <strong>M1</strong> and <strong>M0</strong> from <em>Pausing commands</em>
 in <em>Settings &gt; Serial Connection &gt; Firmware &amp; protocol</em> will prevent
 the need to start print on the Palette 2 and unpausing in Octoprint
 for your print to begin.</p>

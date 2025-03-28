@@ -1486,6 +1486,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#adding-firmware-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding firmware modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#adding-new-kinematics" class="md-nav__link">
     <span class="md-ellipsis">
       Adding new kinematics
@@ -1985,6 +1994,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -2084,6 +2113,15 @@
   <a href="#adding-a-host-module" class="md-nav__link">
     <span class="md-ellipsis">
       Adding a host module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-firmware-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding firmware modules
     </span>
   </a>
   
@@ -2465,6 +2503,40 @@ reference - see <strong>klippy/extras/servo.py</strong> as an example.</p>
   sure to place a copyright notice at the top of the module. See the
   existing modules for the preferred format.</li>
 </ul>
+<h2 id="adding-firmware-modules">Adding firmware modules<a class="headerlink" href="#adding-firmware-modules" title="Permanent link">&para;</a></h2>
+<p>In addition to adding new host modules, it's possible to add new
+firmware modules which will be auto-discovered by the firmware
+build system. This is especially useful for extensions that live
+in their own repository. While host modules are auto-discovered by
+name, firmware modules need to have a <code>Makefile</code> and a <code>Kconfig</code>
+file along with their source files.</p>
+<p>Kalico will include the <code>Makefile</code>s and <code>Kconfig</code>s inside every
+directory inside <code>src/extras</code>. For example, in order to create a new
+firmware module called <code>my-module</code>, create the following files:</p>
+<p><code>src/extras/my-module/Kconfig</code>:</p>
+<div class="highlight"><pre><span></span><code>config WANT_NEW_THING
+    bool &quot;Include the new thing!&quot;
+</code></pre></div>
+
+<p><code>src/extras/my-module/Makefile</code>:</p>
+<div class="highlight"><pre><span></span><code>dirs-y += src/extras/my-module
+src-$(CONFIG_WANT_NEW_THING) += extras/my-module/new-thing.c
+</code></pre></div>
+
+<p><code>src/extras/my-module/new-thing.c</code>:</p>
+<div class="highlight"><pre><span></span><code>/* firmware source goes here */
+</code></pre></div>
+
+<p>Pay special attention to the <code>Makefile</code> -- the directory (with
+<code>src</code> prefix) needs to be added to <code>dirs-y</code> (or
+<code>dirs-$(CONFIG_WANT_NEW_THING)</code>), and the source files need
+to be explicitly added to <code>src-*</code>.</p>
+<p>When a user invokes <code>menuconfig</code>, they'll have a new "Include
+the new thing!" option that they can enable or disable as desired.
+The full <code>Kconfig</code> language is available for more complex
+configurations.</p>
+<p>The <code>my-module</code> directory can also be a symbolic link to a directory
+that lives outside of the Kalico source tree.</p>
 <h2 id="adding-new-kinematics">Adding new kinematics<a class="headerlink" href="#adding-new-kinematics" title="Permanent link">&para;</a></h2>
 <p>This section provides some tips on adding support to Kalico for
 additional types of printer kinematics. This type of activity requires
@@ -2493,10 +2565,10 @@ should only need to update the host software.</p>
    be efficient as it is typically only called during homing and
    probing operations.</li>
 <li>Other methods. Implement the <code>check_move()</code>, <code>get_status()</code>,
-   <code>get_steppers()</code>, <code>home()</code>, and <code>set_position()</code> methods. These
-   functions are typically used to provide kinematic specific checks.
-   However, at the start of development one can use boiler-plate code
-   here.</li>
+   <code>get_steppers()</code>, <code>home()</code>, <code>clear_homing_state()</code>, and <code>set_position()</code>
+   methods. These functions are typically used to provide kinematic
+   specific checks. However, at the start of development one can use
+   boiler-plate code here.</li>
 <li>Implement test cases. Create a g-code file with a series of moves
    that can test important cases for the given kinematics. Follow the
    <a href="Debugging.html">debugging documentation</a> to convert this g-code file

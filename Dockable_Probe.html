@@ -2102,6 +2102,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -2838,6 +2858,9 @@ SET_DOCKABLE_PROBE AUTO_ATTACH_DETACH=1  # Make sure the probe is attached in fu
 <li>The toolhead position is compared to the dock position.</li>
 </ul>
 <ul>
+<li>The pre_attach_gcode is executed</li>
+</ul>
+<ul>
 <li>If the toolhead is outside of the minimum safe radius, the toolhead is
       commanded to move to the approach vector, that is, a position that is
       the minimum safe distance from the dock in line with the dock angle.
@@ -2850,12 +2873,15 @@ SET_DOCKABLE_PROBE AUTO_ATTACH_DETACH=1  # Make sure the probe is attached in fu
 </ul>
 <ul>
 <li>The tool is moved along the approach vector to the dock coordinates.
-    (MOVE_TO_DOCK_PROBE)</li>
+      (MOVE_TO_DOCK_PROBE)</li>
 </ul>
 <ul>
 <li>The toolhead is commanded to move out of the dock back to the minimum
       safe distance in the reverse direction along the dock angle.
       (MOVE_TO_EXTRACT_PROBE)</li>
+</ul>
+<ul>
+<li>The post_attach_gcode is executed</li>
 </ul>
 <ul>
 <li>If configured, the probe is checked to see if it is attached.</li>
@@ -2880,6 +2906,9 @@ SET_DOCKABLE_PROBE AUTO_ATTACH_DETACH=1  # Make sure the probe is attached in fu
 <li>The toolhead position is compared to the dock position.</li>
 </ul>
 <ul>
+<li>The pre_detach_gcode is executed</li>
+</ul>
+<ul>
 <li>If the toolhead is outside of the minimum safe radius, the toolhead is
       commanded to move to the approach vector, that is, a position that is
       the minimum safe distance from the dock in line with the dock angle.
@@ -2897,6 +2926,9 @@ SET_DOCKABLE_PROBE AUTO_ATTACH_DETACH=1  # Make sure the probe is attached in fu
 <ul>
 <li>The toolhead is commanded to move along the detach vector if supplied or a
       calculated direction based on axis parameters. (MOVE_TO_DETACH_PROBE)</li>
+</ul>
+<ul>
+<li>The post_detach_gcode is executed</li>
 </ul>
 <ul>
 <li>If configured, the probe is checked to see if it detached.</li>

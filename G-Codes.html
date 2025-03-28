@@ -861,6 +861,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bed_mesh_check" class="md-nav__link">
+    <span class="md-ellipsis">
+      BED_MESH_CHECK
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4457,6 +4466,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -4711,6 +4740,15 @@
   <a href="#bed_mesh_offset" class="md-nav__link">
     <span class="md-ellipsis">
       BED_MESH_OFFSET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bed_mesh_check" class="md-nav__link">
+    <span class="md-ellipsis">
+      BED_MESH_CHECK
     </span>
   </a>
   
@@ -7295,6 +7333,15 @@ independent extruders, as an offset is necessary to produce correct Z
 adjustment after a tool change.  Note that a ZFADE offset does not apply
 additional z-adjustment directly, it is used to correct the <code>fade</code>
 calculation when a <code>gcode offset</code> has been applied to the Z axis.</p>
+<h4 id="bed_mesh_check">BED_MESH_CHECK<a class="headerlink" href="#bed_mesh_check" title="Permanent link">&para;</a></h4>
+<p><code>BED_MESH_CHECK [MAX_DEVIATION=&lt;value&gt;] [MAX_SLOPE=&lt;value&gt;]</code>: Validates the
+current bed mesh against specified criteria. If MAX_DEVIATION is specified,
+checks that the difference between the highest and lowest mesh points does not
+exceed the provided value. If MAX_SLOPE is specified, checks that the maximum
+slope between adjacent mesh points does not exceed the provided value (in mm/mm).
+The command will raise an error if any specified check fails, or display a message
+confirming the mesh is valid if all checks pass. If no parameters are specified,
+the command will list the available validation checks.</p>
 <h3 id="bed_screws">[bed_screws]<a class="headerlink" href="#bed_screws" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#bed_screws">bed_screws config section</a> is enabled
@@ -7729,15 +7776,18 @@ will almost certainly place the low-level kinematics in an incorrect
 state; issue a G28 afterwards to reset the kinematics. This command is
 intended for low-level diagnostics and debugging.</p>
 <h4 id="set_kinematic_position">SET_KINEMATIC_POSITION<a class="headerlink" href="#set_kinematic_position" title="Permanent link">&para;</a></h4>
-<p><code>SET_KINEMATIC_POSITION [X=&lt;value&gt;] [Y=&lt;value&gt;] [Z=&lt;value&gt;]</code>: Force
-the low-level kinematic code to believe the toolhead is at the given
-cartesian position. This is a diagnostic and debugging command; use
-SET_GCODE_OFFSET and/or G92 for regular axis transformations. If an
-axis is not specified then it will default to the position that the
-head was last commanded to. Setting an incorrect or invalid position
-may lead to internal software errors. This command may invalidate
-future boundary checks; issue a G28 afterwards to reset the
-kinematics.</p>
+<p><code>SET_KINEMATIC_POSITION [X=&lt;value&gt;] [Y=&lt;value&gt;] [Z=&lt;value&gt;]
+[CLEAR=&lt;[X][Y][Z]&gt;]</code>: Force the low-level kinematic code to believe the
+toolhead is at the given cartesian position. This is a diagnostic and
+debugging command; use SET_GCODE_OFFSET and/or G92 for regular axis
+transformations. If an axis is not specified then it will default to the
+position that the head was last commanded to. Setting an incorrect or
+invalid position may lead to internal software errors. Use the CLEAR
+parameter to forget the homing state for the given axes. Note that CLEAR
+will not override the previous functionality; if an axis is not specified
+to CLEAR it will have its kinematic position set as per above. This
+command may invalidate future boundary checks; issue a G28 afterwards to
+reset the kinematics.</p>
 <h3 id="gcode">[gcode]<a class="headerlink" href="#gcode" title="Permanent link">&para;</a></h3>
 <p>The gcode module is automatically loaded.</p>
 <h4 id="restart">RESTART<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
@@ -8070,8 +8120,10 @@ if you encounter weird behaviour while switching profiles.</p>
 Saves the currently loaded profile of the specified heater to the config under
 the given name.</p>
 <p><code>PID_PROFILE REMOVE=&lt;profile_name&gt; HEATER=&lt;heater_name&gt;</code>:
-Removes the given profile from the profiles List for the current session and config if SAVE_CONFIG is issued afterwards.</p>
-<p><code>PID_PROFILE SET_VALUES=&lt;profile_name&gt; HEATER=&lt;heater_name&gt; TARGET=&lt;target_temp&gt; TOLERANCE=&lt;tolerance&gt;
+Removes the given profile from the profiles List for the current session and
+config if SAVE_CONFIG is issued afterwards.</p>
+<p><code>PID_PROFILE SET_VALUES=&lt;profile_name&gt; HEATER=&lt;heater_name&gt; TARGET=&lt;target_temp&gt;
+TOLERANCE=&lt;tolerance&gt;
 CONTROL=&lt;control_type&gt; KP=&lt;kp&gt; KI=&lt;ki&gt; KD=&lt;kd&gt; [RESET_TARGET=0|1] [LOAD_CLEAN=0|1]</code>:
 Creates a new profile with the given PID values, CONTROL must either be <code>pid</code> or
 <code>pid_v</code>, TOLERANCE and TARGET must be specified to create a valid profile,

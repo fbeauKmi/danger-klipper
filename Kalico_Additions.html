@@ -1994,6 +1994,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -2186,6 +2206,8 @@
 <h2 id="enhanced-behavior">Enhanced behavior<a class="headerlink" href="#enhanced-behavior" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="CANBUS.html#finding-the-canbus_uuid-for-new-micro-controllers"><code>canbus_query.py</code></a> now responds with all Kalico devices, even after they've been assigned a node_id.</li>
+<li>Input shaper calibration now warns about active fans that may affect measurement accuracy.</li>
+<li><a href="G-Codes.html#bed_mesh_check"><code>BED_MESH_CHECK</code></a> validates the current bed mesh against specified criteria, allowing you to check maximum deviation and slope between adjacent points before printing.</li>
 </ul>
 <h2 id="new-kalico-modules">New Kalico Modules<a class="headerlink" href="#new-kalico-modules" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2232,7 +2254,10 @@
 <li>The jinja <code>do</code> extension has been enabled. You can now call functions in your macros without resorting to dirty hacks: <code>{% do array.append(5) %}</code></li>
 <li>The python <a href="https://docs.python.org/3/library/math.html"><code>math</code></a> library is available to macros. <code>{math.sin(math.pi * variable)}</code> and more!</li>
 <li>New <a href="G-Codes.html#reload_gcode_macros"><code>RELOAD_GCODE_MACROS</code></a> G-Code command to reload <code>[gcode_macro]</code> templates without requiring a restart.</li>
-<li>G-Code Macros can be written in Python. Read more <a href="Command_Templates.html">here</a></li>
+<li>G-Code Macros can be written in Python. Read more <a href="Command_Templates.html">here</a><ul>
+<li>Macros may also be loaded from other files, using <code>!!include path/to/file.py</code></li>
+</ul>
+</li>
 </ul>
 <h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
 <p>Extend your Kalico installation with custom plugins.</p>

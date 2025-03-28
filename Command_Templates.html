@@ -2108,6 +2108,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -2551,6 +2571,20 @@ gcode:
   !for wipe in range(wipe_count):
   !  for coordinate in [(275, 4), (235, 4)]:
   !    emit(f&quot;G0 X{coordinate[0]} Y{coordinate[1] + 0.25 * wipe} Z9.7 F12000&quot;)
+</code></pre></div>
+
+<p>For ease of writing python macros, they may be read from a <code>.py</code> file. Python type stubs for macros are also available under <code>klippy.macro</code>.</p>
+<div class="highlight"><pre><span></span><code>## printer.cfg
+
+[gcode_macro clean_nozzle]
+gcode: !!include my_macros/clean_nozzle.py
+
+## my_macros/clean_nozzle.py
+
+wipe_count = 8
+emit(&quot;G90&quot;)
+emit(&quot;G0 Z15 F300&quot;)
+...
 </code></pre></div>
 
 <h4 id="python-rawparams">Python: Rawparams<a class="headerlink" href="#python-rawparams" title="Permanent link">&para;</a></h4>

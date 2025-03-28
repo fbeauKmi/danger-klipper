@@ -1911,6 +1911,26 @@
   
   
     <li class="md-nav__item">
+      <a href="Telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kalico Telemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Contact.html" class="md-nav__link">
         
   
@@ -2008,6 +2028,8 @@ are not backwards compatible. It is a good idea to review this
 document when upgrading the Kalico software.</p>
 <p>All dates in this document are approximate.</p>
 <h2 id="changes">Changes<a class="headerlink" href="#changes" title="Permanent link">&para;</a></h2>
+<p>20250207: The <code>driver_CS</code> parameter has been added to tmc5160. Previously the
+CS value was nearly always set to 31. Now, the default is 31, but may be changed.</p>
 <p>20250121: The <code>second_homing_speed</code> default value in the stepper config section
 is now set to <code>homing_speed</code> if sensorless homing is enabled.</p>
 <p>20250107: The <code>rref</code> parameter for tmc2240 is now mandatory with no default value.</p>
