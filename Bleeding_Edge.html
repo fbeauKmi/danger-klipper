@@ -470,6 +470,43 @@
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Bleeding Edge
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bleeding Edge
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -895,6 +932,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nonlinear-pressure-advance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Pressure Advance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nonlinear Pressure Advance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -920,6 +999,35 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Nonlinear_Pressure_Advance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nonlinear Pressure Advance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2745,6 +2853,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nonlinear-pressure-advance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonlinear Pressure Advance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nonlinear Pressure Advance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#considerations_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3079,6 +3229,22 @@ gcode:
     SAVE_GCODE_STATE NAME=PA_TEST_STATE
     UPDATE_DELAYED_GCODE ID=start_pa_test DURATION=0.01
 </code></pre></div>
+
+<h2 id="nonlinear-pressure-advance">Nonlinear Pressure Advance<a class="headerlink" href="#nonlinear-pressure-advance" title="Permanent link">&para;</a></h2>
+<p>Full documentation available here: <a href="Nonlinear_Pressure_Advance.html">Nonlinear Pressure Advance</a></p>
+<h3 id="overview_5">Overview<a class="headerlink" href="#overview_5" title="Permanent link">&para;</a></h3>
+<p>Standard linear pressure advance sometimes cannot fully prevent bulging corners without causing thinned lines, and the best settings can vary with speed and acceleration.
+This feature enables a nonlinear relation between the advance and the filament feedrate, which improves many of these aspects.</p>
+<h3 id="advantages_1">Advantages:<a class="headerlink" href="#advantages_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Improved print quality</li>
+<li>Settings are more independent of speed and acceleration.</li>
+</ul>
+<h3 id="considerations_1">Considerations:<a class="headerlink" href="#considerations_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The multiple interacting parameters make tuning more time-consuming.</li>
+<li>For some extremely fast printers the requested extruder speed and acceleration can result in skipping.</li>
+</ul>
 
 
 
