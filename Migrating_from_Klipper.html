@@ -2142,16 +2142,28 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 
 <h3 id="option-2-using-kiauh">Option 2. Using KIAUH<a class="headerlink" href="#option-2-using-kiauh" title="Permanent link">&para;</a></h3>
 <p>For users that are not comfortable using Git directly, <a href="https://github.com/dw-0/kiauh">KIAUH v6</a> is able to use custom repositories.</p>
-<p>To do this, add the Kalico repo to KIAUH's custom repository settings with the following steps:</p>
+<p>To do this, add the Kalico repo to KIAUH's custom repository config with the following steps:</p>
+<ol>
+<li>Setup kalico as repository in KIAUH
+- <code>cd ~/kiauh</code>
+- <code>cp default.kiauh.cfg kiauh.cfg</code>
+- <code>nano kiauh.cfg</code>
+- add <code>https://github.com/KalicoCrew/kalico, main</code> for the main branch<p>or <code>https://github.com/KalicoCrew/kalico, bleeding-edge-v2</code> for the bleeding edge branch</p>
+</li>
+</ol>
+<ul>
+<li>CTRL-X to save and exit</li>
+</ul>
+<ol>
+<li>Select Kalico in KIAUH</li>
+</ol>
 <p>From the KIAUH menu select:</p>
 <ul>
 <li>[S] Settings</li>
-<li>1) Set custom Klipper repository</li>
-<li>Use <code>https://github.com/KalicoCrew/kalico</code> as the new repository URL</li>
-<li>Use <code>main</code> or <code>bleeding-edge-v2</code> as the new branch name</li>
-<li>Select 'Y' to apply the changes</li>
-<li>Enter 'B' for back twice</li>
-<li>'Q' to quit</li>
+<li>1) Switch Klipper source repository</li>
+</ul>
+<ul>
+<li>Select Kalico from the list</li>
 </ul>
 <h3 id="option-3-adding-a-git-remote-to-the-existing-installation">Option 3. Adding a git-remote to the existing installation<a class="headerlink" href="#option-3-adding-a-git-remote-to-the-existing-installation" title="Permanent link">&para;</a></h3>
 <p>Can switch back to mainline klipper at any time via a <code>git checkout upstream_main</code></p>
