@@ -5694,9 +5694,9 @@ configuration between multiple sections. References take the form of
 <code>${option}</code> to copy a value in the current section, or
 <code>${section.option}</code> to look up a value elsewhere in your configuration. Note,
 that constants must always be lower case.</p>
-<p>Optionally, a <code>[constants]</code> section may be used specifically to store
-these values. Unlike the rest of your configuration, unused constants
-will show a warning instead of causing an error.</p>
+<p>Optionally, a <code>[constants]</code> section can be used specifically to store
+these values. Unused constants will display a warning. However, <code>[constants]</code>
+will display an error if none of the constants are used.</p>
 <div class="highlight"><pre><span></span><code>[constants]
 run_current_ab:  1.0
 i_am_not_used: True  # Will show &quot;Constant &#39;i_am_not_used&#39; is unused&quot;
