@@ -16,35 +16,18 @@ class Fan:
             "kick_start_time", 0.1, minval=0.0
         )
         self.min_power = config.getfloat(
-            "min_power", default=None, minval=0.0, maxval=1.0
+            "min_power", default=0.0, minval=0.0, maxval=1.0
         )
-        self.off_below = config.getfloat(
-            "off_below", default=None, minval=0.0, maxval=1.0
-        )
-        if self.off_below is not None:
-            config.deprecate("off_below")
         self.initial_speed = config.getfloat(
             "initial_speed", default=None, minval=0.0, maxval=1.0
         )
-
-        # handles switchover of variable
-        # if new var is not set, and old var is, set new var to old var
-        # if new var is not set and neither is old var, set new var to default of 0.0
-        # if new var is set, use new var
-        if self.min_power is not None and self.off_below is not None:
-            raise config.error(
-                "min_power and off_below are both set. Remove one!"
-            )
-        if self.min_power is None:
-            if self.off_below is None:
-                # both unset, set to 0.0
-                self.min_power = 0.0
-            else:
-                self.min_power = self.off_below
-
         self.max_power = config.getfloat(
             "max_power", 1.0, above=0.0, maxval=1.0
         )
+        self.off_below = config.getfloat(
+            "off_below", default=0.0, minval=0.0, maxval=1.0
+        )
+
         if self.min_power > self.max_power:
             raise config.error(
                 "min_power=%f can't be larger than max_power=%f"
@@ -96,7 +79,7 @@ class Fan:
     def _apply_speed(self, print_time, value):
         if value == self.last_fan_value:
             return "discard", 0.0
-        if value > 0:
+        if value > self.off_below:
             # Scale value between min_power and max_power
             value = min(value, 1.0)
             pwm_value = (
@@ -104,20 +87,20 @@ class Fan:
             )
         else:
             pwm_value = 0.0
+            value = 0
         if self.enable_pin:
-            if value > 0 and self.last_fan_value == 0:
+            if value > self.off_below and self.last_fan_value == 0:
                 self.enable_pin.set_digital(print_time, 1)
             elif value == 0 and self.last_fan_value > 0:
                 self.enable_pin.set_digital(print_time, 0)
         if (
-            value
-            and value < self.max_power
+            value > self.off_below
             and self.kick_start_time
             and (not self.last_fan_value or value - self.last_fan_value > 0.5)
         ):
             # Run fan at full speed for specified kick_start_time
             self.last_req_value = value
-            self.last_fan_value = value
+            self.last_fan_value = 1.0
             self.last_pwm_value = self.max_power
             self.mcu_fan.set_pwm(print_time, self.max_power)
             return "delay", self.kick_start_time
@@ -143,7 +126,7 @@ class Fan:
         return {
             "power": self.last_pwm_value,
             "value": self.last_fan_value,
-            "speed": self.last_fan_value * self.max_power,
+            "speed": self.last_req_value * self.max_power,
             "rpm": tachometer_status["rpm"],
         }
 
